@@ -13,3 +13,11 @@ where
 {
     Ok(get_line()?.trim().parse::<T>()?)
 }
+
+pub fn get_vector<T>() -> Result<Vec<T>, Box<dyn Error + 'static>>
+where 
+    T: FromStr,
+    <T as FromStr>::Err: Error + 'static
+{
+    Ok(get_line()?.split_whitespace().map(|c| c.parse::<T>()).collect::<Result<Vec<T>, _>>()?)
+}
