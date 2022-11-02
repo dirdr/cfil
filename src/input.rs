@@ -21,3 +21,7 @@ where
 {
     Ok(get_line()?.split_whitespace().map(|c| c.parse::<T>()).collect::<Result<Vec<T>, _>>()?)
 }
+
+pub fn get_unspace_vector() -> Option<Vec<u32>> { 
+    Some(get_line().ok()?.trim().chars().map(|c| c.to_digit(10)).collect::<Option<Vec<u32>>>()?)
+}
